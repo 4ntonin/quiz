@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter.messagebox import *
 
+
 app = Tk()
 
 app.title('Quiz')
@@ -38,11 +39,13 @@ app.config(menu=menubar)
 l = LabelFrame(app, background="#ccf2ff", padx=20, pady=20)
 l.pack(fill="both", expand="yes")
 
-###################################################################################################
-FrameTheme = LabelFrame(l, text="Thème", font=("Arial Black", 16), background="#ccf2ff", padx=20, pady=20)
+###############################################################################
+FrameTheme = LabelFrame(l, text="Thème", font=(
+    "Arial Black", 16), background="#ccf2ff", padx=20, pady=20)
 FrameTheme.pack(side=TOP, padx=5, pady=5)
 
-OptionList = ["couine sans chouiner", "hurle moins fort", "repete sans aboyer", "t'es finito sale fraude pleure ronfle"]
+OptionList = ["couine sans chouiner", "hurle moins fort",
+              "repete sans aboyer", "t'es finito sale fraude pleure ronfle"]
 
 
 variable = StringVar(FrameTheme)
@@ -51,8 +54,9 @@ opt = OptionMenu(FrameTheme, variable, *OptionList)
 opt.config(width=50, background="#ccf2ff")
 opt.pack()
 
-###################################################################################################
-FrameQuestion = LabelFrame(l, text="Question", font=("Arial Black", 16), background="#ccf2ff", padx=20, pady=20)
+###############################################################################
+FrameQuestion = LabelFrame(l, text="Question", font=(
+    "Arial Black", 16), background="#ccf2ff", padx=20, pady=20)
 FrameQuestion.pack(side=TOP, padx=5, pady=5)
 
 value = StringVar()
@@ -60,8 +64,9 @@ value.set("texte par défaut")
 entree = Entry(FrameQuestion, width=100)
 entree.pack()
 
-###################################################################################################
-FrameReponse = LabelFrame(l, text="Réponse", font=("Arial Black", 16), background="#ccf2ff", padx=20, pady=20)
+###############################################################################
+FrameReponse = LabelFrame(l, text="Réponse", font=(
+    "Arial Black", 16), background="#ccf2ff", padx=20, pady=20)
 FrameReponse.pack(side=TOP, padx=5, pady=5)
 
 value = StringVar()
@@ -69,8 +74,9 @@ value.set("texte par défaut")
 entree = Entry(FrameReponse, width=100)
 entree.pack()
 
-###################################################################################################
-bouton=Button(l, text="Valider", command=app.quit, font=("Arial Black", 16), background="#ccf2ff", padx=20, pady=5)
+###############################################################################
+bouton = Button(l, text="Valider", command=app.quit, font=(
+    "Arial Black", 16), background="#ccf2ff", padx=20, pady=5)
 bouton.pack()
 
 

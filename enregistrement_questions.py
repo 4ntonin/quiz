@@ -4,7 +4,6 @@ from tkinter.messagebox import *
 
 app = Tk()
 
-app.title('Quiz')
 app.title("Enregistrement des questions")
 
 window_height = 768

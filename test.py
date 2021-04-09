@@ -1,43 +1,32 @@
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import (QWidget, QPushButton, QLineEdit, QInputDialog, QApplication, QLabel)
 import sys
 
 
-class GroupBox(QWidget):
+class Example(QWidget):
     def __init__(self):
-        QWidget.__init__(self)
-        self.setWindowTitle("GroupBox")
-        layout = QGridLayout()
-        self.setLayout(layout)
-        groupbox = QGroupBox("GroupBox Example")
-        groupbox.setCheckable(True)
-        layout.addWidget(groupbox)
-        vbox = QVBoxLayout()
-        groupbox.setLayout(vbox)
-        radiobutton = QRadioButton("RadioButton 1")
-        vbox.addWidget(radiobutton)
-        radiobutton = QRadioButton("RadioButton 2")
-        vbox.addWidget(radiobutton)
-        radiobutton = QRadioButton("RadioButton 3")
-        vbox.addWidget(radiobutton)
-        radiobutton = QRadioButton("RadioButton 4")
-        vbox.addWidget(radiobutton)
+        super().__init__()
+        self.initUI()
 
-        groupbox2 = QGroupBox("GroupBox Example")
-        groupbox2.setCheckable(False)
-        layout.addWidget(groupbox2)
-        vbox2 = QVBoxLayout()
-        groupbox2.setLayout(vbox2)
-        radiobutton = QRadioButton("RadioButton 1")
-        vbox2.addWidget(radiobutton)
-        radiobutton = QRadioButton("RadioButton 2")
-        vbox2.addWidget(radiobutton)
-        radiobutton = QRadioButton("RadioButton 3")
-        vbox2.addWidget(radiobutton)
-        radiobutton = QRadioButton("RadioButton 4")
-        vbox2.addWidget(radiobutton)
+    def initUI(self):
+        # Add button
+        self.btn = QPushButton('Show Input Dialog', self)
+        self.btn.move(30, 20)
+        self.btn.clicked.connect(self.showDialog)
+        # Add label
+        self.le = QLabel(self)
+        self.le.move(30, 62)
+        self.le.resize(400, 22)
+        self.setGeometry(300, 300, 290, 150)
+        self.setWindowTitle('Input dialog')
+        self.show()
+
+    def showDialog(self):
+        text, ok = QInputDialog.getText(self, 'Input Dialog', 'Enter text:')
+        if ok:
+            self.le.setText(str(text))
 
 
-app = QApplication(sys.argv)
-screen = GroupBox()
-screen.show()
-sys.exit(app.exec_())
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())

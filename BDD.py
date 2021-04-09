@@ -9,3 +9,8 @@ class BDD:
     def requetesql(self, commande):
         self.cur.execute(commande)
         self.conn.commit()
+
+    def get_tables(self):
+        self.cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
+        tables = [i[0] for i in self.cur.fetchall()]
+        return tables

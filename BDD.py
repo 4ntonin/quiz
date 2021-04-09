@@ -11,6 +11,6 @@ class BDD:
         self.conn.commit()
 
     def get_tables(self):
-        self.cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
+        self.cur.execute("SELECT name FROM sqlite_master WHERE type='table' AND name != 'sqlite_sequence';")
         tables = [i[0] for i in self.cur.fetchall()]
         return tables

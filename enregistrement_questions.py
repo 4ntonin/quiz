@@ -1,6 +1,9 @@
 from tkinter import *
 from tkinter.messagebox import *
+# import BDD
 
+
+# base = BDD.BDD("BDDQuiz")
 
 app = Tk()
 app.title("Enregistrement des questions")
@@ -17,6 +20,9 @@ app.geometry(f"{window_width}x{window_height}+{x_cordinate}+{y_cordinate}")
 def alert():
     showinfo("alerte", "Bravo!")
 
+
+# def ajouter_question(question):
+#     base.requetesql("INSERT INTO ")
 
 menubar = Menu(app)
 

@@ -3,7 +3,7 @@ from tkinter.messagebox import *
 import BDD
 
 
-base = BDD.BDD("test2")
+base = BDD.BDD("test")
 
 app = Tk()
 app.title("Enregistrement des questions")
@@ -21,14 +21,19 @@ def alert():
     showinfo("alerte", "Bravo!")
 
 
+def theme_ajoute():
+    showinfo(message="Thème ajouté.")
+    app.destroy()
+
+
 def ajouter_theme(theme):
-    base.requetesql(
-        "CREATE TABLE IF NOT EXISTS ? (id INTEGER PRIMARY KEY AUTO INCREMENT UNIQUE, question TEXT, reponse TEXT)", theme)
+    theme = str(theme)
+    base.requetesql("CREATE TABLE IF NOT EXISTS {} (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, question TEXT, reponse TEXT)".format(theme))
+    theme_ajoute()
 
 
 def ajouter_q_r(theme, question, reponse):
-    base.requetesql(
-        "INSERT INTO ? (question, reponse) VALUES (?, ?)", (theme, question, reponse))
+    base.requetesql("INSERT INTO Test1 (question, reponse) VALUES (?, ?)", (str(question), str(reponse)))
 
 
 menubar = Menu(app)
@@ -51,48 +56,44 @@ l = LabelFrame(app, background="#ccf2ff", padx=20, pady=20)
 l.pack(fill="both", expand="yes")
 
 ###############################################################################
-FrameTheme = LabelFrame(l, text="Thème", font=(
-    "Unispace", 16), background="#ccf2ff", padx=20, pady=20)
+FrameTheme = LabelFrame(l, text="Thème", font=("Unispace", 16), background="#ccf2ff", padx=20, pady=20)
 FrameTheme.pack(side=TOP, padx=5, pady=30)
 
 OptionList = base.get_tables()
 
-variable = StringVar(FrameTheme)
+t = StringVar(FrameTheme)
+t.set("[Thème]")
 if OptionList == []:
-    variable.set("Pas de thème disponible.")
-    opt = OptionMenu(FrameTheme, variable, "Pas de thème disponible.")
+    opt = OptionMenu(FrameTheme, t, "Pas de thème disponible.")
 else:
-    variable.set(OptionList[0])
-    opt = OptionMenu(FrameTheme, variable, *OptionList)
+    opt = OptionMenu(FrameTheme, t, *OptionList)
 
 
 opt.config(width=50, background="#ccf2ff")
 opt.pack()
 
 ###############################################################################
-FrameQuestion = LabelFrame(l, text="Question", font=(
-    "Unispace", 16), background="#ccf2ff", padx=20, pady=20)
+FrameQuestion = LabelFrame(l, text="Question", font=("Unispace", 16), background="#ccf2ff", padx=20, pady=20)
 FrameQuestion.pack(side=TOP, padx=5, pady=30)
 
-value = StringVar()
-value.set("texte par défaut")
-entree = Entry(FrameQuestion, width=100)
-entree.pack()
+q = StringVar()
+q.set("texte par défaut")
+champ = Entry(FrameQuestion, width=100)
+champ.pack()
 
 ###############################################################################
-FrameReponse = LabelFrame(l, text="Réponse", font=(
-    "Unispace", 16), background="#ccf2ff", padx=20, pady=20)
+FrameReponse = LabelFrame(l, text="Réponse", font=("Unispace", 16), background="#ccf2ff", padx=20, pady=20)
 FrameReponse.pack(side=TOP, padx=5, pady=30)
 
-value = StringVar()
-value.set("texte par défaut")
-entree = Entry(FrameReponse, width=100)
-entree.pack()
+r = StringVar()
+r.set("texte par défaut")
+champ = Entry(FrameReponse, width=100)
+champ.pack()
 
 ###############################################################################
-bouton = Button(l, text="Valider", command=app.quit, font=(
-    "Unispace", 16), background="#ccf2ff", padx=20, pady=5)
+bouton = Button(l, text="Valider", font=("Unispace", 16), background="#ccf2ff", command=ajouter_theme("Test7"), padx=20, pady=5)
 bouton.pack(pady=30)
 
+# ajouter_q_r(theme.get(), q.get(), r.get())
 
 app.mainloop()

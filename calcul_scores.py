@@ -1,19 +1,19 @@
-class calculscores:
+class calculScores:
     def __init__(self):
-        self._scoreJ1 = 0
-        self._scoreJ2 = 0
-        self._scoreJ3 = 0
-        self._scoreJ4 = 0
+        self.__scoreJ1 = 0
+        self.__scoreJ2 = 0
+        self.__scoreJ3 = 0
+        self.__scoreJ4 = 0
 
-    def calculscore(self, joueur, points):
+    def calcul_score(self, joueur, points):
         if joueur == 1:
-            self._scoreJ1 += points
+            self.__scoreJ1 += points
         elif joueur == 2:
-            self._scoreJ2 += points
+            self.__scoreJ2 += points
         elif joueur == 3:
-            self._scoreJ3 += points
+            self.__scoreJ3 += points
         elif joueur == 4:
-            self._scoreJ4 += points
+            self.__scoreJ4 += points
 
-    def score(self):
-        return self._scoreJ1, self._scoreJ2, self._scoreJ3, self._scoreJ
+    def get_scores(self):
+        return self.__scoreJ1, self.__scoreJ2, self.__scoreJ3, self.__scoreJ4

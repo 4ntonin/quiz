@@ -49,30 +49,31 @@ menubar.add_cascade(label="Aide", menu=menu3)
 app.config(menu=menubar)
 
 
-l = LabelFrame(app, background="#ccf2ff", padx=20, pady=20)
+l = LabelFrame(app, background="#ffcccc", padx=20, pady=20)
 l.pack(fill="both", expand="yes")
 
 ###############################################################################
-FrameTheme = LabelFrame(l, text="Thème", font=("Unispace", 16), background="#ccf2ff", padx=20, pady=20)
+FrameTheme = LabelFrame(l, text="Thème", font=("Unispace", 16), background="#ffcccc", padx=20, pady=20)
 FrameTheme.pack(side=TOP, padx=5, pady=30)
 
 OptionList = base.get_tables()
 
 t = StringVar(FrameTheme)
-t.set("[Thème]")
 if OptionList == []:
+    t.set("Pas de thème disponible.")
     opt = OptionMenu(FrameTheme, t, "Pas de thème disponible.")
 else:
+    t.set(OptionList[0])
     opt = OptionMenu(FrameTheme, t, *OptionList)
 
-opt.config(width=50, background="#ccf2ff")
+opt.config(width=50, background="#ffcccc")
 opt.pack()
 
 
 def nouveau_theme():
     apptheme = Tk()
     apptheme.title("Enregistrer un thème")
-    window_height = 600
+    window_height = 400
     window_width = 800
     screen_width = apptheme.winfo_screenwidth()
     screen_height = apptheme.winfo_screenheight()
@@ -80,39 +81,39 @@ def nouveau_theme():
     y_cordinate = int((screen_height / 2) - (window_height / 2))
     apptheme.geometry(f"{window_width}x{window_height}+{x_cordinate}+{y_cordinate}")
 
-    ltheme = LabelFrame(apptheme, background="#ccf2ff", padx=20, pady=20)
+    ltheme = LabelFrame(apptheme, background="#ffcccc", padx=20, pady=40)
     ltheme.pack(fill="both", expand="yes")
 
-    FrameNewTheme = LabelFrame(ltheme, text="Nouveau thème", font=("Unispace", 16), background="#ccf2ff", padx=20, pady=20)
+    FrameNewTheme = LabelFrame(ltheme, text="Nouveau thème", font=("Unispace", 16), background="#ffcccc", padx=20, pady=20)
     FrameNewTheme.pack(side=TOP, padx=5, pady=30)
 
     global nt
     nt = Entry(FrameNewTheme, width=100)
     nt.pack()
 
-    bouton = Button(ltheme, text="Valider", command=ajouter_theme, font=("Unispace", 16), background="#ccf2ff", padx=20, pady=5)
+    bouton = Button(ltheme, text="Valider", command=ajouter_theme, font=("Unispace", 16), background="#ffcccc", padx=20, pady=5)
     bouton.pack(pady=30)
 
 
-bouton = Button(FrameTheme, text="Ajouter un thème", command=nouveau_theme, font=("Unispace"), background="#ccf2ff", padx=15, pady=5)
+bouton = Button(FrameTheme, text="Ajouter un thème", command=nouveau_theme, font=("Unispace"), background="#ffcccc", padx=15, pady=5)
 bouton.pack(pady=30)
 
 ###############################################################################
-FrameQuestion = LabelFrame(l, text="Question", font=("Unispace", 16), background="#ccf2ff", padx=20, pady=20)
+FrameQuestion = LabelFrame(l, text="Question", font=("Unispace", 16), background="#ffcccc", padx=20, pady=20)
 FrameQuestion.pack(side=TOP, padx=5, pady=30)
 
 q = Entry(FrameQuestion, width=100)
 q.pack()
 
 ###############################################################################
-FrameReponse = LabelFrame(l, text="Réponse", font=("Unispace", 16), background="#ccf2ff", padx=20, pady=20)
+FrameReponse = LabelFrame(l, text="Réponse", font=("Unispace", 16), background="#ffcccc", padx=20, pady=20)
 FrameReponse.pack(side=TOP, padx=5, pady=30)
 
 r = Entry(FrameReponse, width=100)
 r.pack()
 
 ###############################################################################
-bouton = Button(l, text="Valider", command=ajouter_q_r, font=("Unispace", 16), background="#ccf2ff", padx=20, pady=5)
+bouton = Button(l, text="Valider", command=ajouter_q_r, font=("Unispace", 16), background="#ffcccc", padx=20, pady=5)
 bouton.pack(pady=30)
 
 app.mainloop()

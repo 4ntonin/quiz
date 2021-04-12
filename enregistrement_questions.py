@@ -3,7 +3,7 @@ from tkinter.messagebox import *
 import BDD
 
 
-base = BDD.BDD("test")
+base = BDD.BDD("BDDQuiz")
 
 app = Tk()
 app.title("Enregistrement des questions")

@@ -17,10 +17,6 @@ y_cordinate = int((screen_height / 2) - (window_height / 2))
 app.geometry(f"{window_width}x{window_height}+{x_cordinate}+{y_cordinate}")
 
 
-def alert():
-    showinfo("alerte", "Bravo!")
-
-
 def ajouter_theme():
     theme = nt.get()
     base.requetesql("CREATE TABLE IF NOT EXISTS {} (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, question TEXT, reponse TEXT)".format(str(theme)))
@@ -31,22 +27,6 @@ def ajouter_q_r():
     question = str(q.get())
     reponse = str(r.get())
     base.requetesql("INSERT INTO {} (question, reponse) VALUES (?, ?)".format(theme), (question, reponse))
-
-
-menubar = Menu(app)
-
-menu1 = Menu(menubar, tearoff=0)
-menu1.add_command(label="Créer", command=alert)
-menu1.add_command(label="Editer", command=alert)
-menu1.add_separator()
-menu1.add_command(label="Quitter", command=app.quit)
-menubar.add_cascade(label="Fichier", menu=menu1)
-
-menu3 = Menu(menubar, tearoff=0)
-menu3.add_command(label="A propos", command=alert)
-menubar.add_cascade(label="Aide", menu=menu3)
-
-app.config(menu=menubar)
 
 
 l = LabelFrame(app, background="#ffcccc", padx=20, pady=20)

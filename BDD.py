@@ -6,6 +6,9 @@ class BDD:
         self.conn = sqlite3.connect(f'{nom}.db')
         self.cur = self.conn.cursor()
 
+    def get_cursor(self):
+        return self.cur
+
     def requetesql(self, commande, variables=None):
         if variables:
             self.cur.execute(commande, variables)

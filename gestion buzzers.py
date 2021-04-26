@@ -1,16 +1,25 @@
 #pip install RPi.GPIO
 import RPi.GPIO as GPIO
 
-GPIO.setmode(GPIO.BOARD)
+class Buzzer:
+    def __init__(self):
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(21, GPIO.OUT, GPIO.LOW)
+        GPIO.setup(22, GPIO.OUT, GPIO.LOW)
+        GPIO.setup(23, GPIO.OUT, GPIO.LOW)
+        GPIO.setup(24, GPIO.OUT, GPIO.LOW)
+    def autoriser(self):
+        GPIO.setup(21, GPIO.OUT, GPIO.HIGH)
+        GPIO.setup(22, GPIO.OUT, GPIO.HIGH)
+        GPIO.setup(23, GPIO.OUT, GPIO.HIGH)
+        GPIO.setup(24, GPIO.OUT, GPIO.HIGH)
+    def interdire(self):
+        GPIO.setup(21, GPIO.OUT, GPIO.LOW)
+        GPIO.setup(22, GPIO.OUT, GPIO.LOW)
+        GPIO.setup(23, GPIO.OUT, GPIO.LOW)
+        GPIO.setup(24, GPIO.OUT, GPIO.LOW)
 
-GPIO.setup(10, GPIO.IN)
-GPIO.setup(11, GPIO.IN)
-GPIO.setup(12, GPIO.IN)
-GPIO.setup(13, GPIO.IN)
-GPIO.setup(21, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(22, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(23, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(24, GPIO.OUT, initial=GPIO.LOW)
+buzzer=Buzzer()
 n=2
 while n!=0:
     GPIO.add_event_detect(10, GPIO.RISING)
@@ -19,20 +28,17 @@ while n!=0:
     GPIO.add_event_detect(13, GPIO.RISING)
     while True:
         if GPIO.event_detected(10):
-            GPIO.setup(22, GPIO.OUT, initial=GPIO.LOW)
-            GPIO.setup(23, GPIO.OUT, initial=GPIO.LOW)
-            GPIO.setup(24, GPIO.OUT, initial=GPIO.LOW)
+            buzzer.interdire()
         elif GPIO.event_detected(11):
-            GPIO.setup(21, GPIO.OUT, initial=GPIO.LOW)
-            GPIO.setup(23, GPIO.OUT, initial=GPIO.LOW)
-            GPIO.setup(24, GPIO.OUT, initial=GPIO.LOW)
+            buzzer.interdire()
         elif GPIO.event_detected(12):
-            GPIO.setup(21, GPIO.OUT, initial=GPIO.LOW)
-            GPIO.setup(22, GPIO.OUT, initial=GPIO.LOW)
-            GPIO.setup(24, GPIO.OUT, initial=GPIO.LOW)
+            buzzer.interdire()
         elif GPIO.event_detected(13):
-            GPIO.setup(21, GPIO.OUT, initial=GPIO.LOW)
-            GPIO.setup(22, GPIO.OUT, initial=GPIO.LOW)
-            GPIO.setup(23, GPIO.OUT, initial=GPIO.LOW)
+            buzzer.interdire()
+        while autorisation==False:
+            buzzer.interdire()
+        buzzer.autoriser()
+        if gagner==True:
+            n=2
 
 GPIO.cleanup()

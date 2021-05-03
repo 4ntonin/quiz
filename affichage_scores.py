@@ -28,11 +28,15 @@ class Affichage():
         lab.grid_columnconfigure(10, weight=1)
         lab.mainloop()
 
-    def refresh(self,joueur):
-        c.set_joueur(joueur)
-        c.valider()
-        self.scoreJ1, self.scoreJ2, self.scoreJ3, self.scoreJ4 = c.get_scores()
+    def refresh(self,j):
         lab.destroy()
+        #c.set_joueur(j)
+        #self.scoreJ1, self.scoreJ2, self.scoreJ3, self.scoreJ4 = c.get_scores()
+        #c.valider()
+        c.set_joueur(j)
+        c.valider()
+        j1, j2, j3, j4 = c.get_scores()
+        print(j1, j2, j3, j4)
         a.main()
 
 a=Affichage()

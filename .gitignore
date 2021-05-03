@@ -4,3 +4,4 @@ test.db
 testdeux.db
 test.py
 __pycache__/tirage_question.cpython-39.pyc
+*.pyc

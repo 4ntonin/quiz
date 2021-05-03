@@ -1,9 +1,8 @@
 from tkinter import *
-from functools import *
+#from functools import *
 from calcul_scores import *
 
-score=calculScores
-class AffScores():
+class Affichage():
     def __init__(self):
         self.scoreJ1 = 0
         self.scoreJ2 = 0
@@ -29,15 +28,18 @@ class AffScores():
         lab.grid_columnconfigure(10, weight=1)
         lab.mainloop()
 
-    def refresh(self,joueur,points):
+    def refresh(self,joueur):
+        c.set_joueur(joueur)
+        c.valider()
+        self.scoreJ1, self.scoreJ2, self.scoreJ3, self.scoreJ4 = c.get_scores()
         lab.destroy()
-        score.set_joueur(joueur)
-        score.valider()
-        score.get_scores(1)
-        self.scoreJ1=self.scorej1
-        aff.main()
+        a.main()
 
-aff=AffScores
-scores=calculScores
-while sj1<40 and sj2<40 and sj3<40 and sj4 <40:
-    main()
+a=Affichage()
+c=calculScores()
+a.main()
+a.refresh(4)
+a.refresh(3)
+a.refresh(2)
+#while sj1<40 and sj2<40 and sj3<40 and sj4 <40:
+    #a.main()

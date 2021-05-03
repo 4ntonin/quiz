@@ -27,5 +27,19 @@ class calculScores:
     
     def valider(self):
         """Valide la réponse du joueur et appelle calcul_score pour distribuer les points"""
-        joueur = self.get_joueur
-        return self.calcul_score(joueur, 1)
+        return self.calcul_score(1)
+
+
+# Voilà comment on va procéder dans le programme principal
+
+# c = calculScores()
+# j1, j2, j3, j4 = c.get_scores()
+# print(j1, j2, j3, j4)
+# c.set_joueur(1)
+# c.calcul_score(1)
+# j1, j2, j3, j4 = c.get_scores()
+# print(j1, j2, j3, j4)
+# c.set_joueur(3)
+# c.valider()
+# j1, j2, j3, j4 = c.get_scores()
+# print(j1, j2, j3, j4)

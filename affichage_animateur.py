@@ -12,12 +12,12 @@ tirage = tirage_question.Tirage(theme)
 def get_q_r():
     id = tirage.pick_random_id()
     base.requetesql("SELECT question, reponse FROM {} WHERE id = ?".format(theme), str(id))
-    global q_r
     q_r = base.get_cursor().fetchone()
+    return q_r
 
 
 def main():
-    get_q_r()
+    q_r = get_q_r()
 
     global app
     app = Tk()
@@ -61,4 +61,5 @@ def refresh():
     main()
 
 
-main()
+if __name__ == '__main__':
+    main()

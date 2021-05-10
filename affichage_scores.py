@@ -43,25 +43,25 @@ def test():
     s4= Label(FrameScore4, text=j4, width=50, background="#ffcccc", font=("Unispace",16))
     s4.pack()
 
-    Text=StringVar()
-    entry=Entry(l,textvariable=Text,font=('Unispace',16),width=40)
-    entry.pack(side=TOP, padx=5,pady=5)
+    #Text=StringVar()
+    #entry=Entry(l,textvariable=Text,font=('Unispace',16),width=40)
+    #entry.pack(side=TOP, padx=5,pady=5)
 
-    Bouton=Button(l, text='Refresh',font=('Unispace',16), background="#ffcccc", padx=50, pady=10)
-    Bouton.pack(side=TOP, padx=5,pady=5)
+    #Bouton=Button(l, text='Refresh',font=('Unispace',16), background="#ffcccc", padx=50, pady=10)
+    #Bouton.pack(side=TOP, padx=5,pady=5)
 
 
     app.mainloop()
 
-def refresh():
-    lab.destroy()
-    c.set_joueur(getEntry())
-    j1, j2, j3, j4 = c.get_scores()
-    c.valider()
-    test()
+#def refresh():
+    #lab.destroy()
+    #c.set_joueur(getJoueur())
+    #j1, j2, j3, j4 = c.get_scores()
+    #c.valider()
+    #test()
 
-def getEntry():
-    res = Text.get
+def getJoueur():
+    res = 0
     return res
 
 def main():
